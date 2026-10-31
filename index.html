@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Дарья и Слава — Свадьба</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f7f5ee;
+    --sage: #8a9a7b;
+    --sage-dark: #4f5f45;
+    --sage-light: #dfe5d6;
+    --blush: #e9cfc4;
+    --ink: #2f3a2a;
+    --muted: #6d7866;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--cream); color: var(--ink);
+    font-family: "Montserrat", sans-serif; font-weight: 300; font-size: 16px; line-height: 1.7;
+    overflow-x: hidden;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 16px; }
+  section { padding: 88px 0; position: relative; }
+  h2 { font-family: "Playfair Display", serif; font-weight: 400; font-size: clamp(32px, 5vw, 44px); text-align: center; margin-bottom: 12px; }
+  .script { font-family: "Marck Script", cursive; color: var(--sage); font-size: 28px; text-align: center; display: block; }
+
+  .leaf { color: var(--sage); position: absolute; pointer-events: none; opacity: .9; }
+
+  /* Hero */
+  .hero { min-height: 100vh; display: grid; place-items: center; text-align: center; padding: 64px 16px; position: relative; overflow: hidden;
+    background: radial-gradient(circle at 20% 10%, #eef1e7 0, transparent 45%), radial-gradient(circle at 85% 90%, #f3e6df 0, transparent 40%); }
+  .hero .leaf.lt { top: -30px; left: -40px; width: 300px; transform: rotate(20deg); }
+  .hero .leaf.rb { bottom: -40px; right: -40px; width: 320px; transform: rotate(200deg); }
+  .hero h1 { font-family: "Playfair Display", serif; font-weight: 400; font-size: clamp(44px, 8vw, 76px); line-height: 1.1; }
+  .hero h1 span { font-family: "Marck Script", cursive; color: var(--sage); }
+  .hero .date { margin-top: 24px; display: flex; align-items: center; justify-content: center; gap: 14px; }
+  .date-text { font-family: "Playfair Display", serif; font-size: clamp(26px, 5vw, 38px); line-height: 1.1; color: var(--sage-dark); white-space: nowrap; }
+  .date-text .month { font-family: "Marck Script", cursive; color: var(--sage); font-size: 1.3em; margin: 0 .15em; }
+  .weekday { margin-top: 10px; font-size: 13px; letter-spacing: .45em; text-transform: uppercase; color: var(--muted); }
+  .sprig { width: clamp(32px, 9vw, 80px); height: 28px; color: var(--sage); flex-shrink: 0; }
+  .sprig.flip { transform: scaleX(-1); }
+  h2::after {
+    content: ""; display: block; width: 120px; height: 20px; margin: 10px auto 0; background: var(--sage);
+    -webkit-mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 20'><path d='M0 10h40M80 10h40' stroke='black'/><path d='M43 10c5-6 11-7 15 0-4 7-10 6-15 0zM77 10c-5-6-11-7-15 0 4 7 10 6 15 0z'/><circle cx='60' cy='10' r='2'/></svg>") center / contain no-repeat;
+            mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 20'><path d='M0 10h40M80 10h40' stroke='black'/><path d='M43 10c5-6 11-7 15 0-4 7-10 6-15 0zM77 10c-5-6-11-7-15 0 4 7 10 6 15 0z'/><circle cx='60' cy='10' r='2'/></svg>") center / contain no-repeat;
+  }
+  .green h2::after { background: var(--sage-light); }
+
+  .intro p { max-width: 600px; margin: 24px auto 0; text-align: center; font-size: 20px; font-weight: 400; text-wrap: balance; }
+
+  /* Cards */
+  .cards { display: grid; grid-template-columns: 1fr; gap: 20px; margin: 40px auto 0; max-width: 720px; }
+  @media (min-width: 760px) { .cards { grid-template-columns: repeat(2, 1fr); } }
+  .card { background: #fff; border-radius: 20px; padding: 32px 24px; text-align: center; box-shadow: 0 10px 30px -18px rgba(79, 95, 69, .35); }
+  .card .ico { width: 48px; height: 48px; margin: 0 auto 12px; color: var(--sage); }
+  .card h3 { font-family: "Playfair Display", serif; font-weight: 400; font-size: 26px; margin-bottom: 10px; color: var(--sage-dark); }
+  .card p { color: var(--ink); font-size: 18px; font-weight: 400; line-height: 1.6; }
+  .card p b { display: block; font-family: "Playfair Display", serif; font-weight: 400; font-size: 21px; margin-bottom: 4px; }
+
+  .green { background: var(--sage-dark); color: #f1f3ec; }
+  .green h2 { color: #fff; }
+  .green .script { color: var(--sage-light); }
+  .countdown { display: flex; justify-content: center; gap: 14px; margin-top: 32px; flex-wrap: wrap; }
+  .countdown div { width: 104px; height: 104px; border-radius: 50%; border: 1px solid rgba(255,255,255,.45); display: grid; place-content: center; text-align: center; }
+  .countdown b { font-family: "Playfair Display", serif; font-weight: 400; font-size: 36px; line-height: 1; }
+  .countdown small { font-size: 15px; font-weight: 400; margin-top: 4px; }
+  @media (max-width: 480px) {
+    .countdown { gap: 8px; }
+    .countdown div { width: 76px; height: 76px; }
+    .countdown b { font-size: 28px; }
+    .countdown small { font-size: 13px; margin-top: 2px; }
+  }
+
+  /* Timeline */
+  .tl { max-width: 560px; margin: 40px auto 0; position: relative; }
+  .tl::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: var(--sage-light); }
+  .tl-item { display: grid; grid-template-columns: 1fr 40px 1fr; align-items: center; margin-bottom: 22px; }
+  .tl-item .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--sage); justify-self: center; box-shadow: 0 0 0 6px var(--cream); position: relative; }
+  .tl-item time { font-family: "Playfair Display", serif; font-size: 26px; text-align: right; color: var(--sage-dark); }
+  .tl-item div:last-child h4 { font-weight: 500; font-size: 17px; }
+  .tl-item div:last-child p { color: var(--muted); font-size: 14px; }
+
+  .swatches { display: flex; justify-content: center; gap: 0; margin-top: 32px; }
+  .swatches i { width: 64px; height: 64px; border-radius: 50%; margin-left: -10px; border: 3px solid var(--cream); box-shadow: 0 0 0 1px rgba(47, 58, 42, .08); }
+  @media (max-width: 480px) { .swatches i { width: 54px; height: 54px; } }
+  .emoji { font-style: normal; font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; }
+  .gift-ico { display: block; width: 52px; height: 52px; margin: 28px auto 0; color: var(--sage); }
+  .dress-note, .note { text-wrap: balance; max-width: 560px; margin: 28px auto 0; text-align: center; font-family: "Playfair Display", serif; font-style: italic; font-size: clamp(20px, 3vw, 24px); line-height: 1.5; color: var(--sage-dark); }
+  .center { text-align: center; max-width: 560px; margin: 16px auto 0; }
+
+  /* Contacts */
+  .person { text-align: center; font-family: "Playfair Display", serif; font-size: 24px; margin-top: 24px; }
+  .links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
+  .links a { display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px; border-radius: 999px; background: #fff; color: var(--sage-dark); text-decoration: none; font-weight: 400; box-shadow: 0 10px 30px -18px rgba(79, 95, 69, .45); transition: background .2s, color .2s; }
+  .links a:hover { background: var(--sage-dark); color: #fff; }
+  .links svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+  footer { padding: 56px 16px 72px; }
+  .ornament { display: flex; align-items: center; justify-content: center; gap: 4px; }
+  .ornament .sprig { width: clamp(100px, 28vw, 200px); height: 66px; }
+  .bloom { width: 44px; height: 44px; flex-shrink: 0; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="branch" viewBox="0 0 200 200">
+    <path d="M10 190 C60 140 110 90 190 10" fill="none" stroke="currentColor" stroke-width="2"/>
+    <g fill="currentColor" fill-opacity=".55">
+      <ellipse cx="40" cy="150" rx="18" ry="10" transform="rotate(-60 40 150)"/>
+      <ellipse cx="62" cy="152" rx="18" ry="10" transform="rotate(10 62 152)"/>
+      <ellipse cx="70" cy="115" rx="20" ry="11" transform="rotate(-60 70 115)"/>
+      <ellipse cx="94" cy="118" rx="20" ry="11" transform="rotate(10 94 118)"/>
+      <ellipse cx="102" cy="80" rx="20" ry="11" transform="rotate(-60 102 80)"/>
+      <ellipse cx="126" cy="84" rx="20" ry="11" transform="rotate(10 126 84)"/>
+      <ellipse cx="136" cy="48" rx="17" ry="10" transform="rotate(-60 136 48)"/>
+      <ellipse cx="158" cy="52" rx="17" ry="10" transform="rotate(10 158 52)"/>
+      <ellipse cx="176" cy="22" rx="12" ry="7" transform="rotate(-30 176 22)"/>
+    </g>
+  </symbol>
+  <symbol id="sprig" viewBox="0 0 90 30">
+    <path d="M2 15 C30 15 60 14 88 12" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    <g fill="currentColor" fill-opacity=".6">
+      <ellipse cx="20" cy="9" rx="7" ry="3.5" transform="rotate(-30 20 9)"/>
+      <ellipse cx="28" cy="21" rx="7" ry="3.5" transform="rotate(30 28 21)"/>
+      <ellipse cx="42" cy="8" rx="7" ry="3.5" transform="rotate(-30 42 8)"/>
+      <ellipse cx="50" cy="20" rx="7" ry="3.5" transform="rotate(30 50 20)"/>
+      <ellipse cx="64" cy="7" rx="6" ry="3" transform="rotate(-30 64 7)"/>
+      <ellipse cx="72" cy="18" rx="6" ry="3" transform="rotate(30 72 18)"/>
+      <ellipse cx="85" cy="11" rx="4" ry="2.5"/>
+    </g>
+  </symbol>
+</svg>
+
+<header class="hero">
+  <svg viewBox="0 0 200 200" class="leaf lt"><use href="#branch"/></svg>
+  <svg viewBox="0 0 200 200" class="leaf rb"><use href="#branch"/></svg>
+  <div>
+    <h1>Дарья <span>и</span> Слава</h1>
+    <div class="date">
+      <svg class="sprig flip"><use href="#sprig"/></svg>
+      <span class="date-text">18<span class="month">июня</span>2027</span>
+      <svg class="sprig"><use href="#sprig"/></svg>
+    </div>
+    <p class="weekday">пятница</p>
+  </div>
+</header>
+
+<section class="intro">
+  <div class="wrap">
+    <span class="script">с любовью приглашаем вас</span>
+    <h2>На нашу свадьбу</h2>
+    <p>Будем счастливы, если вы проведёте этот тёплый день вместе с нами.</p>
+    <div class="cards">
+      <div class="card">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="8" y="10" width="32" height="30" rx="4"/><path d="M8 18h32M16 6v8M32 6v8"/></svg>
+        <h3>Когда</h3><p><b>Пятница, 18 июня 2027</b>трансфер в 14:30<br>начало в 15:30</p>
+      </div>
+      <div class="card">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M24 44s14-13 14-24a14 14 0 0 0-28 0c0 11 14 24 14 24z"/><circle cx="24" cy="20" r="5"/></svg>
+        <h3>Где</h3><p><b>Агроусадьба «Ганка»</b>д. Эпимахи, 20<br>Раковский сельсовет<br>Воложинский район<br>Минская область</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="green">
+  <div class="wrap">
+    <h2>До свадьбы осталось</h2>
+    <div class="countdown" id="countdown">
+      <div><b data-k="d">0</b><small>дней</small></div>
+      <div><b data-k="h">0</b><small>часов</small></div>
+      <div><b data-k="m">0</b><small>минут</small></div>
+      <div><b data-k="s">0</b><small>секунд</small></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="script">как всё пройдёт</span>
+    <h2>Программа</h2>
+    <div class="tl">
+      <div class="tl-item"><time>14:30</time><span class="dot"></span><div><h4>Трансфер</h4></div></div>
+      <div class="tl-item"><time>15:30</time><span class="dot"></span><div><h4>Фуршет</h4></div></div>
+      <div class="tl-item"><time>16:10</time><span class="dot"></span><div><h4>Выездная регистрация</h4></div></div>
+      <div class="tl-item"><time>16:30</time><span class="dot"></span><div><h4>Дарение</h4></div></div>
+      <div class="tl-item"><time>17:00</time><span class="dot"></span><div><h4>Банкет</h4></div></div>
+      <div class="tl-item"><time>22:30</time><span class="dot"></span><div><h4>Торт</h4></div></div>
+      <div class="tl-item"><time>23:30</time><span class="dot"></span><div><h4>Трансфер</h4></div></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#eef1e7">
+  <div class="wrap">
+    <span class="script">для настроения</span>
+    <h2>Дресс-код</h2>
+    <div class="swatches">
+      <i style="background:#f4efe4" title="Молочный"></i>
+      <i style="background:#f2c4c0" title="Пудрово-розовый"></i>
+      <i style="background:#ee9f8b" title="Персиковый"></i>
+      <i style="background:#f1df8e" title="Лимонный"></i>
+      <i style="background:#c9d6a2" title="Фисташковый"></i>
+      <i style="background:#7e8f62" title="Шалфей"></i>
+    </div>
+    <p class="dress-note">Будем рады, если вы поддержите цвета нашего праздника, но главное для нас — ваше присутствие</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="script">маленькая просьба</span>
+    <h2>О подарках</h2>
+    <svg class="gift-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="7" y="18" width="34" height="8" rx="1.5"/><path d="M10 26v16h28V26M24 18v24"/><path d="M24 18c-3-6-12-8-12-2 0 3 6 2 12 2zM24 18c3-6 12-8 12-2 0 3-6 2-12 2z"/></svg>
+    <p class="note">Ваз у&nbsp;нас всего две&nbsp;<span class="emoji">🙂</span> Поэтому вместо букетов будем рады любым другим мелочам</p>
+  </div>
+</section>
+
+<section style="background:#eef1e7">
+  <div class="wrap">
+    <span class="script">если есть вопросы</span>
+    <h2>Организатор</h2>
+    <p class="person">Катерина Калегова</p>
+    <div class="links">
+      <a href="tel:+375336861257">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        +375 33 686-12-57
+      </a>
+      <a href="https://t.me/kalegova21" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 3.5 2.8 10.7c-.9.4-.9 1.6.1 1.9l4.6 1.4 1.8 5.6c.2.7 1.1.9 1.6.4l2.6-2.4 4.7 3.5c.7.5 1.6.1 1.8-.7l3-15.4c.2-1-.8-1.8-1.5-1.5z"/><path d="m7.5 14 10-7-7.6 8.4"/></svg>
+        @kalegova21
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ornament">
+    <svg class="sprig flip"><use href="#sprig"/></svg>
+    <svg class="bloom" viewBox="0 0 40 40">
+      <g fill="#e9cfc4">
+        <ellipse cx="20" cy="10" rx="5" ry="9"/>
+        <ellipse cx="20" cy="10" rx="5" ry="9" transform="rotate(72 20 20)"/>
+        <ellipse cx="20" cy="10" rx="5" ry="9" transform="rotate(144 20 20)"/>
+        <ellipse cx="20" cy="10" rx="5" ry="9" transform="rotate(216 20 20)"/>
+        <ellipse cx="20" cy="10" rx="5" ry="9" transform="rotate(288 20 20)"/>
+      </g>
+      <circle cx="20" cy="20" r="4" fill="#8a9a7b"/>
+    </svg>
+    <svg class="sprig"><use href="#sprig"/></svg>
+  </div>
+</footer>
+
+<script>
+  const target = new Date('2027-06-18T16:10:00+03:00');
+  const els = document.querySelectorAll('#countdown b');
+  function tick() {
+    const d = Math.max(0, target - new Date());
+    const v = { d: Math.floor(d / 864e5), h: Math.floor(d / 36e5) % 24, m: Math.floor(d / 6e4) % 60, s: Math.floor(d / 1e3) % 60 };
+    els.forEach(el => el.textContent = v[el.dataset.k]);
+  }
+  tick(); setInterval(tick, 1000);
+</script>
+</body>
+</html>
